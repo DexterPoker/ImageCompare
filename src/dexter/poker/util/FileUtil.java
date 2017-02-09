@@ -14,9 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
-
-import dexter.poker.UI.MainUI;
 
 /**
 * @author DexterPoker
@@ -24,6 +21,11 @@ import dexter.poker.UI.MainUI;
 **/
 public class FileUtil {
 
+	/**
+	 * 获取当前文件夹所有文件(包括文件夹下的子文件)
+	 * @param obj
+	 * @return
+	 */
 	public static ArrayList<File> getListAllFiles(Object obj) {
 		File directory = null;
 		if (obj instanceof File) {
@@ -45,6 +47,11 @@ public class FileUtil {
 		return files;
 	}
 	
+	/**
+	 * 获取当前路径下的文件(不包含文件夹下的文件)
+	 * @param obj
+	 * @return
+	 */
 	public static ArrayList<File> getListFilesCurrentDirectory(Object obj) {
 		File directory = null;
 		if (obj instanceof File) {
@@ -64,6 +71,11 @@ public class FileUtil {
 		return files;
 	}
 	
+	/**
+	 * 获取当前路径下的文件夹
+	 * @param obj
+	 * @return
+	 */
 	public static ArrayList<File> getListDirCurrentDirectory(Object obj) {
 		File directory = null;
 		if (obj instanceof File) {
@@ -83,6 +95,12 @@ public class FileUtil {
 		return files;
 	}
 	
+	/**
+	 * 文件对比
+	 * @param f1
+	 * @param f2
+	 * @return
+	 */
 	public static boolean compareFile(File f1,File f2){ 
 		FileInputStream fis1=null,fis2=null;
 		try {
@@ -119,6 +137,11 @@ public class FileUtil {
 		return false;
 	}
 	
+	/**
+	 * 获取文件大小
+	 * @param f 文件
+	 * @return
+	 */
 	public static int getFileSize(File f){
 		int fileSize = 0;
 		FileInputStream fis = null;
@@ -141,6 +164,12 @@ public class FileUtil {
 		return fileSize;
 	}
 	
+	/**
+	 * 文件复制
+	 * @param source
+	 * @param dest
+	 * @throws IOException
+	 */
 	@SuppressWarnings("resource")
 	public static void copyFileUsingFileChannels(File source, File dest) throws IOException {    
         FileChannel inputChannel = null;    
@@ -206,6 +235,11 @@ public class FileUtil {
 		}
 	}
 	
+	/**
+	 * 删除文件夹
+	 * @param dir 文件夹
+	 * @return
+	 */
 	public static boolean deleteDir(File dir) {
         if (dir.isDirectory()) {
             String[] children = dir.list();
@@ -219,6 +253,11 @@ public class FileUtil {
         return dir.delete();
     }
 	
+	/**
+	 * 读取prop文件
+	 * @param path 文件路径
+	 * @return 内容map返回
+	 */
 	public static Map<String,String> readProperties(String path){
 		Properties properties = new Properties();
         InputStream input = null;
@@ -248,6 +287,12 @@ public class FileUtil {
         }
 	}
 	
+	/**
+	 * 写入prop文件
+	 * @param key 键
+	 * @param value 值
+	 * @param path 文件路径
+	 */
 	public static void writeProperties(String key,String value,String path){
 		Properties properties = new Properties();
 		File f = new File(path);
@@ -295,6 +340,11 @@ public class FileUtil {
 		}
 	}
 	
+	/**
+	 * 写入prop文件
+	 * @param map 内容
+	 * @param path 文件路径
+	 */
 	public static void writeProperties(Map map,String path){
 		Properties properties = new Properties();
 		File f = new File(path);
@@ -344,6 +394,10 @@ public class FileUtil {
 		return path;
 	}
 	
+	/**
+	 * 去除文件小于50kb的图片(无效图片、小图标)
+	 * @param it
+	 */
 	public static void removeUselessImage(Iterator<File> it){
 		while(it.hasNext()){
 			File f = it.next();

@@ -3,6 +3,7 @@ package dexter.poker.util;
 import java.util.Arrays;
 
 /**
+ * 计时器
 * @author DexterPoker
 * @date 2017年1月9日-下午3:11:00
 **/
@@ -28,6 +29,10 @@ public class TimerUtil {
 		this.times = new long[0];
 	}
 	
+	/**
+	 * 添加操作节点
+	 * @param title
+	 */
 	public void add(String title){
 		items = Arrays.copyOf(items, items.length+1);
 		times = Arrays.copyOf(times, times.length+1);
@@ -35,6 +40,9 @@ public class TimerUtil {
 		times[times.length-1] = System.currentTimeMillis();
 	}
 	
+	/**
+	 * 添加结束节点
+	 */
 	public void finish(){
 		items = Arrays.copyOf(items, items.length+1);
 		times = Arrays.copyOf(times, times.length+1);
@@ -42,6 +50,10 @@ public class TimerUtil {
 		times[times.length-1] = System.currentTimeMillis();
 	}
 	
+	/**
+	 * 返回所有的节点耗时统计
+	 * @return
+	 */
 	public String printAll(){
 		StringBuilder sb = new StringBuilder("耗时统计:");
 		if(items.length<2)
@@ -52,6 +64,10 @@ public class TimerUtil {
 		return sb.toString();
 	}
 	
+	/**
+	 * 返回最后一个节点耗时
+	 * @return
+	 */
 	public String printLastItem(){
 		if(items.length<2)
 			return "timer内统计项小于2项";
